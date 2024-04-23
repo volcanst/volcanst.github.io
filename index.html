@@ -20,6 +20,22 @@
 
   <link rel="stylesheet" href="/css/style.css">
 
+  <!-- 导入jquery-2.1.4.min.js -->
+  <script src="/js/jquery-2.1.4.min.js"></script>
+  <!-- 导入数据 -->
+  <script>
+    // $(function () {
+    //   alert("加载jQuery");
+    // })
+    $.getJSON("/data/data.json", function (data) {
+      //data 代表读取到的json中的数据
+
+      // 定义全局变量
+      window.data = data
+      // console.log(window.data)
+    });
+  </script>
+
   <meta name="generator" content="Hexo 5.4.0">
 </head>
 
@@ -33,7 +49,7 @@
         <div id="header-outer" class="outer">
           <div id="header-title" class="inner">
             <h1 id="logo-wrap">
-              <a href="" id="logo"> 
+              <a href="" id="logo">
                 Volcanst的博客<img src="/image/FluentEmojiFlatRabbit.png" width="30" height="30">
               </a>
             </h1>
@@ -60,6 +76,8 @@
         </div>
       </header>
 
+
+
       <!-- 首页内容主体及侧边栏 -->
       <div class="outer">
 
@@ -67,34 +85,78 @@
         <section id="main">
 
           <!-- 一篇文章 -->
-          <article class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-inner">
+          <script>
+            $(function () {
+              var data_len = Object.keys(window.data).length
+              for (var i = 0; i < data_len; i++) {
+                $.myFunc(window.data[i])
+              }
 
-              <!-- 文章标题 -->
-              <header class="article-header">
-                <h1 itemprop="name">
-                  <a class="article-title" href="">文章名称</a>
-                </h1>
-              </header>
+            })
 
-              <div class="article-entry" itemprop="articleBody">
+            // 自定义函数
+            $.extend({
+              'myFunc': function (data) {
+                // console.log(data)
+                var add_article = document.createElement('article');
+                add_article.setAttribute('class', 'article article-type-post')
 
-                <p>文章内容</p>
+                var tmp = document.createElement('div');
+                tmp.setAttribute('class', 'article-inner')
+                add_article.append(tmp)
+                var pre_tmp = tmp
 
-                <p class="article-more-link">
-                  <a href="/#more">查看更多</a>
-                </p>
+                tmp = document.createElement('header');
+                tmp.setAttribute('class', 'article-header')
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
 
-              </div>
+                tmp = document.createElement('h1');
+                // tmp.setAttribute('class','article-header')
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
 
-              <footer class="article-footer">
-                <a href="https://www.Volcanst.cn" class="article-share-link">分享</a>
+                tmp = document.createElement('a');
+                tmp.setAttribute('class', 'article-title')
+                tmp.appendChild(document.createTextNode(data['title']))   //增加文章标题
+                tmp.setAttribute('href', data['url'])   //增加文章链接
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
 
-              </footer>
-            </div>
+                tmp = document.createElement('div');
+                tmp.setAttribute('class', 'article-entry')
+                pre_tmp = add_article.children[0]
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
 
-          </article>
+                tmp = document.createElement('p');
+                tmp.setAttribute('class', 'article-content')
+                tmp.appendChild(document.createTextNode(data['content']))   //增加文章简介
+                pre_tmp.appendChild(tmp)
+                //pre_tmp = tmp
 
+                tmp = document.createElement('footer');
+                tmp.setAttribute('class', 'article-footer')
+                // pre_tmp = add_article.children[0]
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
+
+                tmp = document.createElement('p');
+                tmp.setAttribute('class', "article-more-link")
+                pre_tmp.append(tmp)
+                pre_tmp = tmp
+
+                tmp = document.createElement('a');
+                tmp.setAttribute('href', data['url'])   //增加文章链接
+                // tmp.appendChild("查看更多")   //增加文章简介
+                tmp.innerHTML = "查看更多"  //增加链接
+                pre_tmp.append(tmp)
+
+
+                $('section').append(add_article)
+              }
+            })
+          </script>
 
 
 
@@ -110,7 +172,37 @@
             <div class="widget">
               <ul class="archive-list">
                 <li class="archive-list-item">
-                  <a class="archive-list-link" href="">文章1</a>
+
+                  <!-- 文章列表 -->
+                  <script>
+                    $(function () {
+                      var data_len = Object.keys(window.data).length
+                      for (var i = 0; i < data_len; i++) {
+                        $.myFunc1(window.data[i])
+                      }
+                    })
+
+                    // 自定义函数
+                    $.extend({
+                      'myFunc1': function (data) {
+                        var pre_tmp = document.createElement('li')
+                        pre_tmp.setAttribute("class", "archive-list-item")
+
+                        var tmp = document.createElement('img')
+                        tmp.setAttribute("src", "/image/ArcticonsMyfeedlexiconrabbits.png")
+                        tmp.setAttribute("class", "dot")
+                        pre_tmp.append(tmp)
+
+                        tmp = document.createElement('a')
+                        tmp.setAttribute("class", "archive-list-link")
+                        tmp.setAttribute("href", data["url"])
+                        tmp.innerHTML = data["title"]
+                        pre_tmp.append(tmp)
+
+                        $(".archive-list").append(pre_tmp)
+                      }
+                    })
+                  </script>
                 </li>
               </ul>
             </div>
@@ -133,16 +225,10 @@
     </div>
 
 
-    <nav id="mobile-nav">
-
-      <a href="/" class="mobile-nav-link">首页</a>
-
-      <a href="/archives" class="mobile-nav-link">Archives</a>
-
-    </nav>
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
 
 
 

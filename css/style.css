@@ -209,6 +209,11 @@ body {
   border: 1px solid #ddd;
   border-radius: 3px;
 }
+
+.article-entry {
+  height: auto;
+}
+
 .article-entry h1,
 .widget h1 {
   font-size: 2em;
@@ -549,7 +554,7 @@ body {
   transition: color 0.2s;
 }
 a.article-title:hover {
-  color: #258fb8;
+  color: #f86408;
 }
 .article-entry {
   color: #555;
@@ -563,10 +568,10 @@ a.article-title:hover {
 .article-entry:after {
   clear: both;
 }
-.article-entry p,
+.article-entry p.article-content,
 .article-entry table {
   line-height: 1.6em;
-  margin: 1.6em 0;
+  margin: 1.6em 1.6em;
 }
 .article-entry h1,
 .article-entry h2,
@@ -674,6 +679,15 @@ a.article-title:hover {
   height: 100%;
   margin-top: 0;
 }
+
+.article-more-link {
+  cursor: pointer;
+  float: right;
+  margin: 10px 10px;
+  margin-top: 20px;
+}
+
+
 .article-more-link a {
   display: inline-block;
   line-height: 1em;
@@ -685,17 +699,19 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #258fb8;
+  background: #f27712;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #1e7293;
+  text-shadow: 0 1px #f0690f;
 }
+
 .article-footer {
   font-size: 0.85em;
   line-height: 1.6em;
   border-top: 1px solid #ddd;
-  padding-top: 1.6em;
-  margin: 0 20px 20px;
+  padding-top: 0em;
+  margin: 10px 20px 10px 20px;
+
 }
 .article-footer:before,
 .article-footer:after {
@@ -1309,11 +1325,12 @@ pre .javascript .function {
   border-radius: 3px;
 }
 .widget a {
-  color: #258fb8;
+  color: #242424;
   text-decoration: none;
 }
 .widget a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: #f86408;
 }
 .widget ul ul,
 .widget ol ul,
@@ -1351,6 +1368,33 @@ pre .javascript .function {
 .widget ol ol {
   list-style: decimal;
 }
+
+.archive-list-item {
+  display:flex;
+  justify-content:left;
+  align-items: center;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  /* display: block; */
+  /* position: relative; */
+  /* border-radius: 50%; */
+  /* background-color: rgb(249, 153, 8); */
+  z-index: 1;
+  margin-right: 10px;
+}
+
+.archive-list-link {
+  line-height: 30px;
+  margin: 3px 3px;
+  /* 内容过长显示成省略号（内容显示为一行） */
+  white-space: nowrap;/*设置不换行*/
+  overflow: hidden; /*设置隐藏*/
+  text-overflow: ellipsis; /*设置隐藏部分为省略号*/
+}
+
 .category-list-count,
 .tag-list-count,
 .archive-list-count {
