@@ -16,12 +16,42 @@
 
   <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 
+  <!-- 图标 -->
   <link rel="icon" href="/image/FluentEmojiFlatRabbit.png"> <!-- https://yesicon.app/search/%E5%85%94%E5%AD%90 -->
 
   <link rel="stylesheet" href="/css/style.css">
 
   <!-- 导入jquery-2.1.4.min.js -->
   <script src="/js/jquery-2.1.4.min.js"></script>
+
+  <!-- 导入公式包 -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script type="text/x-mathjax-config;executed=true">
+      window.MathJax.Hub.Config({
+          showProcessingMessages: false, //关闭js加载过程信息
+          messageStyle: "none", //不显示信息
+          jax: ["input/TeX", "output/HTML-CSS"],
+          tex2jax: {
+              inlineMath: [["\$", "\$"], ["\\(", "\\)"]], //行内公式选择符
+              displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+              skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+          },
+          "HTML-CSS": {
+              availableFonts: ["STIX", "TeX"], //可选字体
+              showMathMenu: false //关闭右击菜单显示
+          }
+      });
+      //下面第三个参数可以不写，默认对整个html内的latex进行翻译
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
+</script>
+  <script id="MathJax-script" async src="/js/MathJax-3.2.2/es5/tex-chtml.js"></script>
+
   <!-- 导入数据 -->
   <script>
     // $(function () {
@@ -50,7 +80,7 @@
           <div id="header-title" class="inner">
             <h1 id="logo-wrap">
               <a href="" id="logo">
-                Volcanst的博客<img src="/image/FluentEmojiFlatRabbit.png" width="30" height="30">
+                Volcanst的博客<img id="logo_img" src="/image/FluentEmojiFlatRabbit.png" width="30" height="30">
               </a>
             </h1>
           </div>
@@ -84,81 +114,82 @@
         <!-- 首页内容主体 -->
         <section id="main">
 
-          <!-- 一篇文章 -->
-          <script>
-            $(function () {
-              var data_len = Object.keys(window.data).length
-              for (var i = 0; i < data_len; i++) {
-                $.myFunc(window.data[i])
-              }
+          <!-- 一篇文章 --> <!-- 直接通过js创建代码需要等待较长时间，可以建立html框架后填充数据 -->
+          <article class='article article-type-post'>
+            <div class="article-inner">
+              <!-- 标题 -->
+              <header class="article-header">
+                <h1>
+                  <a class="article-title" href="/"> </a>
+                </h1>
+              </header>
 
-            })
+              <!-- 内容及脚注 -->
+              <div class="article-entry">
+                <p class="article-content">
 
-            // 自定义函数
-            $.extend({
-              'myFunc': function (data) {
-                // console.log(data)
-                var add_article = document.createElement('article');
-                add_article.setAttribute('class', 'article article-type-post')
+                </p>
 
-                var tmp = document.createElement('div');
-                tmp.setAttribute('class', 'article-inner')
-                add_article.append(tmp)
-                var pre_tmp = tmp
-
-                tmp = document.createElement('header');
-                tmp.setAttribute('class', 'article-header')
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('h1');
-                // tmp.setAttribute('class','article-header')
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('a');
-                tmp.setAttribute('class', 'article-title')
-                tmp.appendChild(document.createTextNode(data['title']))   //增加文章标题
-                tmp.setAttribute('href', data['url'])   //增加文章链接
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('div');
-                tmp.setAttribute('class', 'article-entry')
-                pre_tmp = add_article.children[0]
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('p');
-                tmp.setAttribute('class', 'article-content')
-                tmp.appendChild(document.createTextNode(data['content']))   //增加文章简介
-                pre_tmp.appendChild(tmp)
-                //pre_tmp = tmp
-
-                tmp = document.createElement('footer');
-                tmp.setAttribute('class', 'article-footer')
-                // pre_tmp = add_article.children[0]
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('p');
-                tmp.setAttribute('class', "article-more-link")
-                pre_tmp.append(tmp)
-                pre_tmp = tmp
-
-                tmp = document.createElement('a');
-                tmp.setAttribute('href', data['url'])   //增加文章链接
-                // tmp.appendChild("查看更多")   //增加文章简介
-                tmp.innerHTML = "查看更多"  //增加链接
-                pre_tmp.append(tmp)
+                <footer class="article-footer">
+                  <p class="article-more-link">
+                    <a href="">查看更多</a>
+                  </p>
+                </footer>
+              </div>
+            </div>
+          </article>
 
 
-                $('section').append(add_article)
-              }
-            })
-          </script>
+          <!-- 一篇文章 --> <!-- 直接通过js创建代码需要等待较长时间，可以建立html框架后填充数据 -->
+          <article class='article article-type-post'>
+            <div class="article-inner">
+              <!-- 标题 -->
+              <header class="article-header">
+                <h1>
+                  <a class="article-title" href="/"> </a>
+                </h1>
+              </header>
+
+              <!-- 内容及脚注 -->
+              <div class="article-entry">
+                <p class="article-content">
+
+                </p>
+
+                <footer class="article-footer">
+                  <p class="article-more-link">
+                    <a href="">查看更多</a>
+                  </p>
+                </footer>
+              </div>
+            </div>
+          </article>
 
 
+          <!-- 一篇文章 --> <!-- 直接通过js创建代码需要等待较长时间，可以建立html框架后填充数据 -->
+          <article class='article article-type-post'>
+            <div class="article-inner">
+              <!-- 标题 -->
+              <header class="article-header">
+                <h1>
+                  <a class="article-title" href="/"> </a>
+                </h1>
+              </header>
+
+              <!-- 内容及脚注 -->
+              <div class="article-entry">
+                <p class="article-content">
+
+                </p>
+
+                <footer class="article-footer">
+                  <p class="article-more-link">
+                    <a href="">查看更多</a>
+                  </p>
+                </footer>
+              </div>
+            </div>
+          </article>
 
         </section>
 
@@ -172,13 +203,16 @@
             <div class="widget">
               <ul class="archive-list">
                 <li class="archive-list-item">
-
                   <!-- 文章列表 -->
                   <script>
                     $(function () {
-                      var data_len = Object.keys(window.data).length
-                      for (var i = 0; i < data_len; i++) {
-                        $.myFunc1(window.data[i])
+                      if (typeof (window.data) != 'undefined') {
+                        var data_len = Object.keys(window.data).length
+                        for (var i = 0; i < data_len; i++) {
+                          $.myFunc1(window.data[i])
+                        }
+                      }else{
+                        window.location.reload(false)
                       }
                     })
 
@@ -203,6 +237,7 @@
                       }
                     })
                   </script>
+
                 </li>
               </ul>
             </div>
@@ -217,8 +252,7 @@
       <footer id="footer">
         <div class="outer">
           <div id="footer-info" class="inner">
-            &copy; 2024 Volcanst<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            &copy; 2024 Volcanst
           </div>
         </div>
       </footer>
@@ -245,7 +279,31 @@
 
 
 
+
   </div>
 </body>
+
+<!-- 填充数据 -->
+<script>
+  $(function () {
+    if (typeof (window.data) != 'undefined') {
+      var data_len = Object.keys(window.data).length
+      var frame_len = $(".article").length
+      min_len = data_len > frame_len ? frame_len : data_len
+      // console.log(min_len)
+      for (var i = 0; i < min_len; i++) {
+        var data = window.data[i]
+        $(".article-title")[i].setAttribute("href", data['url'])
+        $(".article-title")[i].innerHTML = data['title']
+        $(".article-content")[i].innerHTML = data['content']
+        $(".article-more-link")[i].firstElementChild.setAttribute("href", data['url'])
+      }
+    } else {
+      window.loaction.reload(false)
+    }
+  })
+</script>
+
+
 
 </html>
