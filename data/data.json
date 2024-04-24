@@ -1,27 +1,27 @@
 [
     {
 		"title": "文章标题1文章内容1文章内容1文章内容1文章内容1文章内容1文章内容1文章内容1文章内",   
-		"url": "/111.txt",
+		"url": "/note/1.txt",
 		"content": "<h1>aaa</h1>$$\\frac{a}{b} a + b $$"
 	},
 	{
 		"title": "文章标题2",
-		"url": "/222.txt",
+		"url": "/note/2.txt",
 		"content": "文章内容2"
 	},
 	{
 		"title": "文章标题3",
-		"url": "/333.txt",
+		"url": "/note/3.txt",
 		"content": "文章内容3"
 	},
 	{
 		"title": "文章标题4",
-		"url": "/444.txt",
+		"url": "/note/4.txt",
 		"content": "文章内容4"
 	},
 	{
 		"title": "文章标题5",
-		"url": "/555.txt",
+		"url": "/note/5.txt",
 		"content": "文章内容5"
 	}
 ]
