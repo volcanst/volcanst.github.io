@@ -1,12 +1,12 @@
 [
     {
 		"title": "文章标题1文章内容1文章内容1文章内容1文章内容1文章内容1文章内容1文章内容1文章内",   
-		"url": "/note/1.txt",
+		"url": "/note/1.html",
 		"content": "<h1>aaa</h1>$$\\frac{a}{b} a + b $$"
 	},
 	{
 		"title": "文章标题2",
-		"url": "/note/2.txt",
+		"url": "/note/2.html",
 		"content": "文章内容2"
 	},
 	{
